@@ -1,0 +1,124 @@
+\documentclass[11pt]{cernrep}
+\usepackage{graphicx,epsfig}
+\usepackage{amsmath}
+\bibliographystyle{lesHouches}
+
+% definitions here, only use \newcommand, no \def
+\newcommand{\order}{\mathcal{O}	}
+
+
+\begin{document}
+
+% find a catchy title, this is just a filler
+\title{Electroweak corrections in Drell-Yan production}
+
+\author{
+  A.\ Huss$^1$,
+  M.\ Sch\"onherr$^2$
+}
+\institute{
+  $^1$ ETH\\
+  $^2$ UZH
+}
+
+\maketitle
+
+\begin{abstract}
+  We compare the description of higher-order electroweak corrections at 
+  $\order(\alpha)$ and $\order(\alpha_S\alpha)$ in Drell-Yan production.
+\end{abstract}
+
+\section{INTRODUCTION}
+\label{sec:dyew:intro}
+
+
+
+\section{COMPUTATION}
+\label{sec:dyew:comp}
+
+
+$\order(\alpha_s\alpha)$ corrections are calculated directly in \cite{}.
+
+Another approach to higher order QED or electroweak corrections is 
+presented in the soft-photon resummation of Yennie, Frautschi and 
+Suura (YFS) \cite{Yennie:1961ad}. Therein the universal structure 
+of real and virtual soft photon emissions is exploited to construct 
+and all-orders approximation to the process at hand which can be 
+systematically supplemented with process-dependent finite hard 
+real and virtual emission corrections. The implementation presented 
+in \cite{Schonherr:2008av} focusses on higher-order QED corrections 
+to particle decays and is used since as the default mechanism for such 
+corrections in \textsc{Sherpa} \cite{Gleisberg:2008ta}, both for 
+elementary particle (e.g.\ $W^\pm$, $Z$, $\tau^\pm$) as well as 
+hadron decays. 
+
+In the present context of lepton pair production the higher-order 
+QED corrections are effected in a factorised approach. The complete 
+process $pp\to\ell^+\ell^-$ is calculated at LO or NLO in the strong 
+coupling constant keeping all off-shell effects. Then, an intermediate 
+resonance $X$ is reconstructed from the lepton pair and assigned its 
+invariant mass. Its decay width is then corrected for higher order 
+QED corrections, including YFS resummation, to 
+\begin{equation}
+  \begin{split}\label{eq:dyew:comp:yfs}
+    \Gamma
+    \,=\;&
+      \frac{1}{2m_X}\sum\limits_{n_\gamma=0}^\infty\frac{1}{n_\gamma !}
+      \int\mathrm{d}\Phi\;e^{Y(\Omega)}
+      \prod\limits_{i=1}^{n_\gamma}\mathrm{d}\Phi_i\,\tilde{S}(k_i)\,\Theta(k_i,\Omega)
+      \left[
+        \tilde\beta_0^0
+        +\tilde\beta_0^1
+        +\sum\limits_{i=1}^{n_\gamma}\frac{\tilde\beta_1^1(k_i)}{\tilde{S}(k_i)}
+        +\order(\alpha^2)
+      \right]\;.
+  \end{split}
+\end{equation}
+Therein, $m_X$ is the mass of the decaying resonance and $\mathrm{d}\Phi$ 
+is the phase element of the leading order decay, and $\tilde\beta_0^0$ is 
+the leading order decay squared matrix element. The $Y(\Omega)$ then 
+is the sum of the eikonal approximations to virtual photon exchange and 
+unresolved soft real photon emission, $\Omega$ denoting the region in which 
+soft photons are not resolvable. The YFS form factor, $e^{Y(\Omega)}$ then 
+resums these leading logarithmic universal corrections to all orders. 
+Resolved photons are then described explicitly, emission by emission, 
+by the eikonal $\tilde{S}$ depending on the individual photon momentum 
+$k_i$. $\mathrm{d}\Phi_i$ is the corresponding phase space element. The 
+eikonal approximations used in both the YFS form factor and for 
+resolved real emissions can then, order-by-order, be corrected by 
+supplementing the corresponding infrared-subtracted squared matrix 
+elements $\tilde\beta_i^{i+j}$ of $\order(\alpha^{i+j})$ relative to 
+the Born decay and containing $i$ resolved photons. Since all charged 
+particles are considered massive in the context of YFS resummation, 
+all $\tilde\beta_i$ are free of any infrared singularity. Finally, it is 
+interesting to note that in the case of multi-photon emission 
+each emitted photon receives the hard emission correction $\tilde\beta_1^1$ 
+in the respective one-photon emission projected phase space.
+
+The implementation used here, as we restrict the the $\gamma^*/Z$ propagator 
+virtuality to be near the $Z$ mass, always identifies the resonance $X$ with 
+the $Z$ boson. The calculation thus contains the $\order(\alpha)$ virtual 
+corrections $\tilde\beta_0^1$ and real emission corrections $\tilde\beta_1^1$ 
+resulting in an NLO QED accurate description. As NLO weak corrections 
+are finite they can in principle be incorporated in the $\tilde\beta_0^1$. 
+This is left to a future work.
+
+
+\section{RESULTS}
+\label{sec:dyew:results}
+
+definitely bare $m_{\mu\mu}$ and dressed $m_{ee}$, 
+maybe also $p_{\perp,e}$, $p_{\perp,\mu}$, $y_e$, $y_\mu$
+
+\section{CONCLUSIONS}
+\label{sec:dyew:conclusions}
+
+final remarks
+
+\section*{ACKNOWLEDGEMENTS}
+
+We thank the organisers.
+
+%=================================
+\bibliography{dyew_bib}
+\end{document}
