@@ -79,15 +79,18 @@ This approach is suitable to describe observables that are dominated by resonanc
 and the computation of the numerically most important contribution has been performed in Ref~\cite{Dittmaier:2015rxo}.
 
 %%%%% Some context
-In this work, we investigate how the $\order(\alphas\alpha)$ corrections generated through a parton-shower approach compares to the result of Ref[].
-Section~\ref{sec:dyew:comp} gives a brief overview of the computation employing the PA and the implementation of the QED shower in the \textsc{Sherpa} Monte Carlo program~\cite{Gleisberg:2008ta}.
-In Sect.~\ref{sec:dyew:results} we present our numerical results of the comparison before we conclude in Sect.~\ref{sec:dyew:conclusions}.
-\todo{reference to a section adds an additional ``.''}
+In this work, we investigate how the $\order(\alphas\alpha)$ corrections 
+generated through a universal process-independent resummation approach 
+compares to the result of Ref.~\cite{Dittmaier:2015rxo}.
+Section~\ref{sec:dyew:comp} gives a brief overview of the computation 
+employing the PA and the implementation of the QED shower in the 
+\textsc{Sherpa} Monte Carlo program~\cite{Gleisberg:2008ta}.
+In Sect.~\ref{sec:dyew:results} we present our numerical results of the 
+comparison before we conclude in Sect.~\ref{sec:dyew:conclusions}.
 
 
-\section{Computation}
+\section{Computational setup}
 \label{sec:dyew:comp}
-\todo{better section title}
 
 %%%%% The pole approximation
 \paragraph{The Pole approximation:}
@@ -104,7 +107,7 @@ In the remainder of this work, we will thus focus our attention to the initial--
 More details on the calculation of the $\order(\alphas\alpha)$ corrections in the PA is given in Refs.~\cite{Dittmaier:2014qza,Dittmaier:2015rxo}.
 
 %%%%% Sherpa's YFS shower
-\paragraph{The QED shower in Sherpa:}
+\paragraph{The QED resummation in Sherpa:}
 Another approach to higher order QED or electroweak corrections is 
 presented in the soft-photon resummation of Yennie, Frautschi and 
 Suura (YFS)~\cite{Yennie:1961ad}. Therein the universal structure 
@@ -145,7 +148,7 @@ is the phase element of the leading order decay, and $\tilde\beta_0^0$ is
 the leading order decay squared matrix element. The $Y(\Omega)$ then 
 is the sum of the eikonal approximations to virtual photon exchange and 
 unresolved soft real photon emission, $\Omega$ denoting the region in which 
-soft photons are not resolvable. The YFS form factor, $\re^{Y(\Omega)}$ then 
+soft photons are not resolvable. The YFS form factor, $\re^{Y(\Omega)}$, then 
 resums these leading logarithmic universal corrections to all orders. 
 Resolved photons are then described explicitly, emission by emission, 
 by the eikonal $\tilde{S}$ depending on the individual photon momentum 
@@ -174,108 +177,183 @@ This is left to a future work.
 \label{sec:dyew:results}
 
 %%%%% numerical setup
-The numerical results presented in this section are obtained using the same input parameters and event selection cuts as in Ref.~\cite{Dittmaier:2015rxo}. 
-The electroweak coupling constant $\alpha$ is defined in the $G_\mu$-scheme, with the exception of the photonic corrections which use $\alpha(0)$ as their coupling.
-All results are obtained using the NNPDF2.3QED NLO PDF set~\cite{Ball:2012cx}, in particular, also the LO predictions shown in the following were evaluated using this PDF set. 
-For the charged leptons in the final state we consider two different reconstruction strategies:
-In the case of ``dressed'' leptons we apply a photon recombination procedure in order to treat all collinear lepton--photon configurations inclusively, whereas in the ``bare'' muon setup no such recombination is performed. 
-Further details on the calculational setup and the event reconstruction are given in Ref.~\cite{Dittmaier:2015rxo}.
+The numerical results presented in this section are obtained using 
+the same input parameters and event selection cuts as in 
+Ref.~\cite{Dittmaier:2015rxo}. The electroweak coupling constant 
+$\alpha$ is defined in the $G_\mu$-scheme, with the exception of 
+the photonic corrections which use $\alpha(0)$ as their coupling. 
+All results are obtained using the NNPDF2.3QED NLO PDF set 
+\cite{Ball:2012cx}, in particular also the LO predictions shown in 
+the following were evaluated using this PDF set. For the charged 
+leptons in the final state we consider two different reconstruction 
+strategies: In the case of ``dressed'' electrons, we apply a photon 
+recombination procedure in order to treat all collinear 
+lepton--photon configurations inclusively, whereas in the ``bare'' 
+muon setup no such recombination is performed. Further details on 
+the calculational setup and the event reconstruction are given in 
+Ref.~\cite{Dittmaier:2015rxo}.
 
 %%%%% define delta
-In order to establish the setup of the two computations, we first consider the $\order(\alpha)$ corrections by applying the YFS shower in \textsc{Sherpa} to the LO prediction, $\sigma^{\rLO\otimes\rYFS}_\rSherpa$, and comparing it to the full EW corrections denoted as $\sigma^{\rNLO[\rEW]}$%
+In order to establish the setup of the two computations, we first 
+consider the relative $\order(\alpha)$ corrections by applying 
+the YFS resummation in \textsc{Sherpa} to the LO prediction, 
+$\sigma^{\rLO\otimes\rYFS}$, and compare it to the full 
+EW corrections denoted as $\sigma^{\rNLO[\rEW]}$%
 \footnote{
-  A comparison of the PA at $\order(\alpha)$ against the full NLO EW corrections has been performed in Ref[].
+  A comparison of the PA at $\order(\alpha)$ against the full 
+  NLO EW corrections has been performed in Ref[].
 }.
-The respective relative correction factors, normalised to the LO prediction, are then given by
+The respective relative correction factors, normalised to the LO 
+prediction, are then given by
 \begin{align}
-  \label{eq:delta:nlo}
-  \delta_\alpha^\rSherpa &= 
-  \frac{\sigma^{\rLO\otimes\rYFS}_\rSherpa - \sigma^\rLO}{\sigma^\rLO}
+  \label{eq:dyew:delta:nlo}
+  \delta_\alpha^\rYFS &= 
+  \frac{\sigma^{\rLO\otimes\rYFS} - \sigma^\rLO}{\sigma^\rLO}
   , &
   \delta_\alpha &= 
   \frac{\sigma^{\rNLO[\rEW]} - \sigma^\rLO}{\sigma^\rLO}
   .
 \end{align}
-For the mixed QCD--EW corrections, we generate terms of $\order(\alphas\alpha)$ by applying the QED shower on top of the fixed-order NLO QCD prediction, which we denote by $\sigma^{\rNLO[\rQCD]\otimes\rYFS}_\rSherpa$.
-These results are compared to the best prediction of Ref.~\cite{Dittmaier:2015rxo}, $\sigma^{\rNNLO[\rQCD\times\rEW]}_{\rPA}$, which includes the full NLO QCD and EW corrections, supplemented by the dominant $\order(\alphas\alpha)$ corrections in the PA.
-In order to extract the genuine $\order(\alphas\alpha)$ contribution from the prediction based on the YFS shower, we define the relative correction factor as follows,
+Please note, the thus defined $\delta_\alpha^\rYFS$ retains also 
+higher orders of $\alpha$ contrary to $\delta_\alpha$. For the 
+mixed QCD--EW corrections, we generate terms of $\order(\alphas\alpha)$ 
+by applying the YFS resummation on top of the fixed-order NLO QCD 
+prediction, which we denote by $\sigma^{\rNLO[\rQCD]\otimes\rYFS}$.
+These results are compared to the best prediction of 
+Ref.~\cite{Dittmaier:2015rxo}, $\sigma^{\rNNLO[\rQCD\times\rEW]}_{\rPA}$, 
+which includes the full NLO QCD and EW corrections, supplemented by 
+the dominant $\order(\alphas\alpha)$ corrections in the PA. In order 
+to extract the genuine $\order(\alphas\alpha)$ contribution from the 
+prediction based on the YFS resummation, we define the relative 
+correction factor as follows,
 \begin{align}
-  \label{eq:delta:nnlo:sherpa}
-  \delta_{\alphas\alpha}^\rSherpa &= 
-  \frac{ (\sigma^{\rNLO[\rQCD]\otimes\rYFS}_\rSherpa - \sigma^{\rNLO[\rQCD]}) 
-        -(\sigma^{\rLO\otimes\rYFS}_\rSherpa - \sigma^\rLO)}
+  \label{eq:dyew:delta:nnlo:yfs}
+  \delta_{\alphas\alpha}^\rYFS &= 
+  \frac{ (\sigma^{\rNLO[\rQCD]\otimes\rYFS} - \sigma^{\rNLO[\rQCD]}) 
+        -(\sigma^{\rLO\otimes\rYFS} - \sigma^\rLO)}
        {\sigma^\rLO} .
 \end{align}
-For the fixed-order prediction in the PA, the corresponding correction factor is given by
+For the fixed-order prediction in the PA, the corresponding correction 
+factor is given by
 \begin{align}
-  \label{eq:delta:nnlo:pa}
+  \label{eq:dyew:delta:nnlo:pa}
   \delta_{\alphas\alpha}^\rPA &= 
     \frac{\sigma^{\rNNLO[\rQCD\times\rEW]}_{\rPA} - \sigma^{\rNLO[\rQCD+\rEW]}}
        {\sigma^\rLO} .
 \end{align}
-
+Again, as in Eq.~\ref{eq:dyew:delta:nlo}, $\delta_{\alphas\alpha}^\rYFS$ 
+also contains higher orders in $\alpha$, contrary to 
+$\delta_{\alphas\alpha}^\rPA$.
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{figure}
   \includegraphics[width=.48\linewidth]{images/Z_mll2_LO.pdf} \hfill
   \includegraphics[width=.48\linewidth]{images/Z_mll2_NLO.pdf} 
   \caption{
-    Comparison of the $\order(\alpha)$~(left) and $\order(\alphas\alpha)$~(right) corrections to the invariant-mass distribution of the lepton pair $m_{\Pl\Pl}$ between Ref.~\cite{Dittmaier:2015rxo} and Sherpa.
-    The absolute distributions and the relative corrections at the respective order are shown in the top and bottom panels, respectively.
-    Collinear lepton--photon configurations are treated both inclusively with a recombination procedure resulting in the ``dressed'' setup~(blue) or exclusively in the case of muons labelled as ``bare $\mu$''~(red).
+    Comparison of the $\order(\alpha)$~(left) and $\order(\alphas\alpha)$ 
+    (right) corrections to the invariant-mass distribution of the lepton 
+    pair $m_{\Pl\Pl}$ between Ref.~\cite{Dittmaier:2015rxo} and Sherpa. 
+    The absolute distributions and the relative corrections at the 
+    respective order are shown in the top and bottom panels, respectively. 
+    Collinear lepton--photon configurations are treated both inclusively 
+    with a recombination procedure resulting in the ``dressed'' setup 
+    (blue) or exclusively in the case of muons labelled as ``bare $\mu$'' 
+    (red).
   }
-  \label{fig:mll}
+  \label{fig:dyew:mll}
 \end{figure}
 %%%%%
 \begin{figure}
   \includegraphics[width=.48\linewidth]{images/Z_ptl+2_LO.pdf} \hfill
   \includegraphics[width=.48\linewidth]{images/Z_ptl+2_NLO.pdf} 
   \caption{
-    Comparison of the $\order(\alpha)$~(left) and $\order(\alphas\alpha)$~(right) corrections to the transverse-momentum distribution of the positively charged lepton $p_\rT^\Plp$ between Ref.~\cite{Dittmaier:2015rxo} and Sherpa.
-    The absolute distributions and the relative corrections at the respective order are shown in the top and bottom panels, respectively.
-    Collinear lepton--photon configurations are treated both inclusively with a recombination procedure resulting in the ``dressed'' setup~(blue) or exclusively in the case of muons labelled as ``bare $\mu$''~(red).
+    Comparison of the $\order(\alpha)$~(left) and $\order(\alphas\alpha)$ 
+    (right) corrections to the transverse-momentum distribution of the 
+    positively charged lepton $p_\rT^\Plp$ between 
+    Ref.~\cite{Dittmaier:2015rxo} and Sherpa. The absolute distributions 
+    and the relative corrections at the respective order are shown in the 
+    top and bottom panels, respectively. Collinear lepton--photon 
+    configurations are treated both inclusively with a recombination 
+    procedure resulting in the ``dressed'' setup~(blue) or exclusively in 
+    the case of muons labelled as ``bare $\mu$''~(red).
   }
-  \label{fig:ptl}
+  \label{fig:dyew:ptl}
 \end{figure}
 %%%%%
 \begin{figure}
   \includegraphics[width=.48\linewidth]{images/Z_yll_LO.pdf} \hfill
   \includegraphics[width=.48\linewidth]{images/Z_yll_NLO.pdf}
   \caption{
-    Comparison of the $\order(\alpha)$~(left) and $\order(\alphas\alpha)$~(right) corrections to the rapidity distribution of the lepton pair $y_{\Pl\Pl}$ between Ref.~\cite{Dittmaier:2015rxo} and Sherpa.
-    The absolute distributions and the relative corrections at the respective order are shown in the top and bottom panels, respectively.
-    Collinear lepton--photon configurations are treated both inclusively with a recombination procedure resulting in the ``dressed'' setup~(blue) or exclusively in the case of muons labelled as ``bare $\mu$''~(red).
+    Comparison of the $\order(\alpha)$~(left) and $\order(\alphas\alpha)$ 
+    (right) corrections to the rapidity distribution of the lepton pair 
+    $y_{\Pl\Pl}$ between Ref.~\cite{Dittmaier:2015rxo} and Sherpa. The 
+    absolute distributions and the relative corrections at the respective 
+    order are shown in the top and bottom panels, respectively. Collinear 
+    lepton--photon configurations are treated both inclusively with a 
+    recombination procedure resulting in the ``dressed'' setup~(blue) or 
+    exclusively in the case of muons labelled as ``bare $\mu$''~(red).
   }
-  \label{fig:yll}
+  \label{fig:dyew:yll}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%
 
 
 %%%%% discuss results
-The numerical results comprise differential distributions in the lepton invariant mass $m_{\Pl\Pl}$, the transverse momentum of the positively charged lepton $p_\rT^\Plp$, and the rapidity of the lepton pair $y_{\Pl\Pl}$, which are shown in Figs.~\ref{fig:mll}--\ref{fig:yll}, respectively.
-The left plot in the figures shows a comparison of the NLO EW corrections, while the right-hand plot compares the corresponding $\order(\alphas\alpha)$ corrections. 
-In each plot we show the absolute distributions in the top frame and the relative correction factors in the bottom panel as defined in Eq.~\eqref{eq:delta:nlo} for the $\order(\alpha)$ and Eqs.~\eqref{eq:delta:nnlo:sherpa} and \eqref{eq:delta:nnlo:pa} for the mixed QCD--EW corrections.
+The numerical results comprise differential distributions in the 
+lepton invariant mass $m_{\Pl\Pl}$, the transverse momentum of the 
+positively charged lepton $p_\rT^\Plp$, and the rapidity of the 
+lepton pair $y_{\Pl\Pl}$, which are shown in 
+Figs.~\ref{fig:dyew:mll}--\ref{fig:dyew:yll}, respectively. The left plot 
+in the figures shows a comparison of the $\order(\alpha)$ corrections, 
+while the right-hand plot compares the corresponding $\order(\alphas\alpha)$ 
+corrections. In each plot we show the absolute distributions in 
+the top frame and the relative correction factors in the bottom 
+panel as defined in Eq.~\eqref{eq:dyew:delta:nlo} for the $\order(\alpha)$ 
+and Eqs.~\eqref{eq:dyew:delta:nnlo:yfs} and \eqref{eq:dyew:delta:nnlo:pa} 
+for the mixed QCD--EW corrections.
 
 %% mll
-For the invariant mass distribution shown in Fig.~\ref{fig:mll} we observe an overall good agreement between the QED shower and the fixed-order result.
-This reflects the property of this observable whose corrections are known to be dominated by final-state photon emission.
-Both at $\order(\alpha)$ and $\order(\alphas\alpha)$ we observe a small offset between the two predictions where the parton-shower approach leads to slightly smaller corrections below the $\PZ$ resonance. 
-This difference originates from multi-photon emissions, which is included in the YFS shower~\eqref{eq:dyew:comp:yfs} whereas the fixed-order prediction is restricted to at most one photon emission.
+For the invariant mass distribution shown in Fig.~\ref{fig:dyew:mll} we 
+observe an overall good agreement between the YFS resummation and 
+the fixed-order result. This reflects the property of this observable 
+whose corrections are known to be dominated by final-state photon 
+emission. Both at $\order(\alpha)$ and $\order(\alphas\alpha)$ we 
+observe a small offset between the two predictions where the resummed 
+approach leads to slightly smaller corrections below the $\PZ$ 
+resonance. This difference originates from multi-photon emissions, 
+which is included in the YFS formalism, cf.\ Eq.~\eqref{eq:dyew:comp:yfs}, 
+whereas the fixed-order prediction is restricted to at most one 
+photon emission.
 %% ptlp
-Figure~\ref{fig:ptl} shows the corrections to the transverse momentum distribution of the positively charged lepton, $p_\rT^\Plp$.
-Although giving qualitatively a similar shape in the $\order(\alpha)$ corrections, we observe larger differences between the two computations around the resonance and in the higher transverse momentum tails.
-This difference can be understood from the fact that this observable is sensitive to initial-state radiation effects, which are not accounted for in the shower approach.
-Indeed, comparing the final-state factorizable $\order(\alpha)$ corrections in PA to the full NLO EW corrections shows a very similar picture as seen here (see Fig.~9 in Ref.~\cite{Dittmaier:2014qza}).
-For the mixed-QCD--EW corrections, on the other hand, the EW corrections contained in the $\order(\alphas\alpha)$ PA prediction are also confined to the decay sub-process similarly to the case of the QED shower.
-As a result, we see a much better agreement between the two computations here.
+Figure~\ref{fig:dyew:ptl} shows the corrections to the transverse momentum 
+distribution of the positively charged lepton, $p_\rT^\Plp$. Although 
+giving qualitatively a similar shape in the $\order(\alpha)$ corrections, 
+we observe larger differences between the two computations around the 
+resonance and in the higher transverse momentum tails. This difference 
+can be understood from the fact that this observable is sensitive to 
+recoil effects from initial-state radiation which are not accounted for 
+in the YFS approach as used here.  Indeed, comparing the final-state 
+factorizable $\order(\alpha)$ corrections in PA to the full NLO EW 
+corrections shows a very similar picture as seen here (see Fig.~9 in 
+Ref.~\cite{Dittmaier:2014qza}). For the mixed-QCD--EW corrections, on 
+the other hand, the EW corrections contained in the 
+$\order(\alphas\alpha)$ PA prediction are also confined to the decay 
+sub-process similarly to the case of the YFS resummation. As a result, 
+we see a much better agreement between the two computations here.
 %% yll
-Lastly, the numerical results for the rapidity distribution of the lepton pair $y_{\Pl\Pl}$ are shown in Fig.~\ref{fig:yll}.
-At $\order(\alpha)$, the shower prediction is able to reproduce the exact fixed-order result to a large extent up to a small offset in the normalisation.
-This shift can be attributed to the finite weak corrections which are missing in the YFS shower prediction.
-The purely weak corrections amount to a constant correction of approximately $-0.5\%$ in this distribution which precisely matches the observed offset. 
-For the mixed QCD--EW corrections we obtain corrections from the QED shower that are similar in shape to those of the fixed-order prediction in the PA, however, with larger negative corrections in the forward regime.
-\todo{any simple explanation for this?}
-
+Lastly, the numerical results for the rapidity distribution of the 
+lepton pair, $y_{\Pl\Pl}$, are shown in Fig.~\ref{fig:dyew:yll}. At 
+$\order(\alpha)$, the resummed prediction is able to reproduce the 
+exact fixed-order result to a large extent up to a small offset in 
+the normalisation. This shift can be attributed to the finite weak 
+corrections which are missing in the YFS resummed prediction here. 
+The purely weak corrections amount to a constant correction of 
+approximately $-0.5\%$ in this distribution which precisely matches 
+the observed offset. For the mixed QCD--EW corrections we obtain 
+corrections from the YFS resummation that are similar in shape to 
+those of the fixed-order prediction in the PA, however, with larger 
+negative corrections in the forward regime which possibly stem from 
+multi-photon effects on the event acception in this region
 
 
 
@@ -283,15 +361,33 @@ For the mixed QCD--EW corrections we obtain corrections from the QED shower that
 \label{sec:dyew:conclusions}
 
 %%%%% short summary
-The Drell--Yan process is one of the most important ``standard candle'' processes at the LHC and, as such, has a wide range of applications.
-In this work, we have explored the possibility of generating mixed QCD--EW corrections of $\order(\alphas\alpha)$ to this process using the YFS shower available in the \textsc{Sherpa} Monte Carlo and performed a comparison to the fixed-order calculation of Ref.~\cite{Dittmaier:2015rxo}.
-To this end, we have considered both $\order(\alpha)$ and $\order(\alphas\alpha)$ corrections to various differential distributions given by the invariant mass of the leptons, the lepton transverse momentum, and the rapidity of the lepton pair.
-We find that the QED shower is able to capture the electroweak corrections to these observables remarkably well and we were further able to identify the sources for the small differences that was observed between the two predictions.
+The Drell--Yan process is one of the most important ``standard candle'' 
+processes at the LHC and, as such, has a wide range of applications.
+In this work, we have explored the possibility of generating mixed 
+QCD--EW corrections of $\order(\alphas\alpha)$ to this process using 
+the YFS resummation available in the \textsc{Sherpa} Monte Carlo and 
+performed a comparison to the fixed-order calculation of 
+Ref.~\cite{Dittmaier:2015rxo}. To this end, we have considered both 
+$\order(\alpha)$ and $\order(\alphas\alpha)$ corrections to various 
+differential distributions given by the invariant mass of the leptons, 
+the lepton transverse momentum, and the rapidity of the lepton pair.
+We find that the QED resummation is able to capture the electroweak 
+corrections to these observables remarkably well and we were further 
+able to identify the sources for the small differences that was 
+observed between the two predictions.
 
 %%%%% outlook
-Building on the insights that were gained from this study, it will be interesting to investigate further observables and also repeating this comparison for the charged-current process.
-Furthermore, potential improvements were identified in both computations which should be explored in order to gain more insight into the numerical impact of the various ingredients that enter the two predictions. 
-Such improvements include the finite weak corrections that can be incorporated to the YFS shower approach through the $\tilde{\beta}^1$ coefficient in Eq.~\eqref{eq:dyew:comp:yfs} on the one side, and supplementing the fixed-order calculation with multi-photon emission effects. 
+Building on the insights that were gained from this study, it will 
+be interesting to investigate further observables and also repeating 
+this comparison for the charged-current process. Furthermore, potential 
+improvements were identified in both computations which should be 
+explored in order to gain more insight into the numerical impact of 
+the various ingredients that enter the two predictions. Such 
+improvements include the finite weak corrections that can be 
+incorporated to the YFS approach through the $\tilde{\beta}^1$ 
+coefficient in Eq.~\eqref{eq:dyew:comp:yfs} on the one side, and 
+supplementing the fixed-order calculation with multi-photon emission 
+effects. 
 
 
 \section*{ACKNOWLEDGEMENTS}
