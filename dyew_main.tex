@@ -1,7 +1,6 @@
 \documentclass[11pt]{cernrep}
 \usepackage{graphicx,epsfig}
 \usepackage{amsmath}
-\usepackage{todonotes}
 \bibliographystyle{lesHouches}
 
 % definitions here, only use \newcommand, no \def
@@ -54,7 +53,8 @@
 
 \begin{abstract}
   We compare the description of higher-order electroweak corrections at 
-  $\order(\alpha)$ and $\order(\alphas\alpha)$ in Drell--Yan production.
+  $\order(\alpha)$ and $\order(\alphas\alpha)$ for the neutral-current 
+  Drell--Yan process.
 \end{abstract}
 
 
@@ -68,20 +68,16 @@ Not only does this process constitute a powerful tool for detector calibration, 
 
 %%%%% Theory status: fixed order
 On the theory side, Drell--Yan production belongs to one of the most precisely predicted processes:
-%the importance of this process is reflected by the very precise predictions that are available for Drell--Yan production:
-QCD corrections are known up to NNLO~[] and the NLO electroweak~(EW) corrections have been computed as well.
+QCD corrections are known up to NNLO~~\cite{Hamberg:1990np,Harlander:2002wh,Anastasiou:2003ds,Melnikov:2006di,Melnikov:2006kv,Catani:2009sm,Gavin:2010az,Gavin:2012sy}, the electroweak~(EW) corrections up to NLO~\cite{Baur:1997wa,Zykunov:2001mn,Baur:2001ze,Dittmaier:2001ay,Baur:2004ig,Arbuzov:2005dd,CarloniCalame:2006zq,Zykunov:2005tc,CarloniCalame:2007cd,Arbuzov:2007db,Brensing:2007qm,Dittmaier:2009cr}, and many further improvements beyond fixed-order predictions (see, e.g., references in Ref.~\cite{Dittmaier:2015rxo}).
 Until recently, the largest missing piece in terms of fixed-order predictions were given by the NNLO mixed QCD--EW corrections.
 Different approaches of combining QCD and EW corrections revealed that the missing $\order(\alphas\alpha)$ corrections could have an impact of a few per cent in the resonance region, i.e.\ at the level that is relevant for precision phenomenology.
-% Their impact has been studied by considering different approached of combining QCD and EW corrections and it was found that the unknown $\order(\alphas\alpha)$ corrections can have an impact at the level of a few \% in the resonance region. 
 In a series of papers~\cite{Dittmaier:2014qza,Dittmaier:2015rxo}, the calculation of these corrections have been tackled using the so-called pole approximation~(PA).
-This approach is suitable to describe observables that are dominated by resonances
-% with sufficient accuracy 
-and the computation of the numerically most important contribution has been performed in Ref~\cite{Dittmaier:2015rxo}.
+This approach is suitable to describe observables that are dominated by resonances with sufficient accuracy.
 
 %%%%% Some context
 In this work, we investigate how the $\order(\alphas\alpha)$ corrections 
 generated through a universal process-independent resummation approach 
-compares to the result of Ref.~\cite{Dittmaier:2015rxo}.
+compares to the results of Ref.~\cite{Dittmaier:2015rxo}.
 Section~\ref{sec:dyew:comp} gives a brief overview of the computation 
 employing the PA and the implementation of the QED shower in the 
 \textsc{Sherpa} Monte Carlo program~\cite{Gleisberg:2008ta}.
@@ -94,17 +90,17 @@ comparison before we conclude in Sect.~\ref{sec:dyew:conclusions}.
 
 %%%%% The pole approximation
 \paragraph{The Pole approximation:}
-The calculation of the $\order(\alphas\alpha)$ corrections in Refs.~\cite{Dittmaier:2014qza,Dittmaier:2015rxo} was performed in the framework of a pole expansion, which is based on a systematic expansion of the cross section around the gauge-boson resonance $p_V^2\sim\mu_V^2$, with $\mu_V^2=M_V^2-\ri M_V\Gamma_V$ denoting the gauge-invariant location of the propagator pole in the complex plane. 
+The calculation of the $\order(\alphas\alpha)$ corrections presented in Refs.~\cite{Dittmaier:2014qza,Dittmaier:2015rxo} was performed in the framework of a pole expansion, which is based on a systematic expansion of the cross section around the gauge-boson resonance $p_V^2\sim\mu_V^2$, with $\mu_V^2=M_V^2-\ri M_V\Gamma_V$ denoting the gauge-invariant location of the propagator pole in the complex plane. 
 Only retaining the leading contributions that are enhanced by a resonant propagator, we obtain the so-called pole approximation~(PA).
 As a result of applying the PA, the calculation is split into separate well-defined parts that can be classified into the non-factorizable and factorizable corrections: 
 The non-factorizable corrections involve soft-photon exchange between the production and decay stages of the process and constitute the conceptually most difficult part of the calculation.
 They have been computed in Ref.~\cite{Dittmaier:2014qza} and were found to be negligible for all phenomenological purposes.
-The factorizable contributions involve corrections where the production of the intermediate gauge boson and its decay proceed independently. 
-Here, the factorizable corrections of ``initial--final'' type were identified as the numerically dominant contribution---combining the sizeable QCD corrections to the production sub-process with the large EW corrections of the gauge boson decay---which were computed in Ref.~\cite{Dittmaier:2015rxo}.
+The factorizable contributions, on the other hand, involve corrections where the production of the intermediate gauge boson and its decay proceed independently. 
+Here, the factorizable corrections of ``initial--final'' type were identified as the numerically dominant contribution---combining the sizeable QCD corrections to the production sub-process with the large EW corrections of the gauge boson decay---and were computed in Ref.~\cite{Dittmaier:2015rxo}.
 The remaining factorizable corrections are given by the ``initial--initial'' and ``finial--final'' types.
 The latter were found to be numerically negligible~\cite{Dittmaier:2015rxo}, while the former are not expected to deliver a sizeable correction, in particular for observables that are less sensitive to initial-state radiation effects.
 In the remainder of this work, we will thus focus our attention to the initial--final factorizable corrections which we will often simply refer to as the $\order(\alphas\alpha)$ corrections in the PA.
-More details on the calculation of the $\order(\alphas\alpha)$ corrections in the PA is given in Refs.~\cite{Dittmaier:2014qza,Dittmaier:2015rxo}.
+More details on this calculation can be found in Refs.~\cite{Dittmaier:2014qza,Dittmaier:2015rxo}.
 
 %%%%% Sherpa's YFS shower
 \paragraph{The QED resummation in Sherpa:}
@@ -182,9 +178,9 @@ the same input parameters and event selection cuts as in
 Ref.~\cite{Dittmaier:2015rxo}. The electroweak coupling constant 
 $\alpha$ is defined in the $G_\mu$-scheme, with the exception of 
 the photonic corrections which use $\alpha(0)$ as their coupling. 
-All results are obtained using the NNPDF2.3QED NLO PDF set 
-\cite{Ball:2012cx}, in particular also the LO predictions shown in 
-the following were evaluated using this PDF set. For the charged 
+For the parton distribution functions we use the NNPDF2.3QED NLO PDF 
+set~\cite{Ball:2012cx}, in particular also the LO predictions shown in 
+the following were evaluated using this choice. For the charged 
 leptons in the final state we consider two different reconstruction 
 strategies: In the case of ``dressed'' electrons, we apply a photon 
 recombination procedure in order to treat all collinear 
@@ -256,8 +252,8 @@ $\delta_{\alphas\alpha}^\rPA$.
     The absolute distributions and the relative corrections at the 
     respective order are shown in the top and bottom panels, respectively. 
     Collinear lepton--photon configurations are treated both inclusively 
-    with a recombination procedure resulting in the ``dressed'' setup 
-    (blue) or exclusively in the case of muons labelled as ``bare $\mu$'' 
+    with a recombination procedure resulting in the ``e dressed'' setup 
+    (blue) or exclusively in the case of muons labelled as ``$\mu$ bare'' 
     (red).
   }
   \label{fig:dyew:mll}
@@ -274,8 +270,8 @@ $\delta_{\alphas\alpha}^\rPA$.
     and the relative corrections at the respective order are shown in the 
     top and bottom panels, respectively. Collinear lepton--photon 
     configurations are treated both inclusively with a recombination 
-    procedure resulting in the ``dressed'' setup~(blue) or exclusively in 
-    the case of muons labelled as ``bare $\mu$''~(red).
+    procedure resulting in the ``e dressed'' setup~(blue) or exclusively in 
+    the case of muons labelled as ``$\mu$ bare''~(red).
   }
   \label{fig:dyew:ptl}
 \end{figure}
@@ -290,8 +286,8 @@ $\delta_{\alphas\alpha}^\rPA$.
     absolute distributions and the relative corrections at the respective 
     order are shown in the top and bottom panels, respectively. Collinear 
     lepton--photon configurations are treated both inclusively with a 
-    recombination procedure resulting in the ``dressed'' setup~(blue) or 
-    exclusively in the case of muons labelled as ``bare $\mu$''~(red).
+    recombination procedure resulting in the ``e dressed'' setup~(blue) or 
+    exclusively in the case of muons labelled as ``$\mu$ bare''~(red).
   }
   \label{fig:dyew:yll}
 \end{figure}
@@ -327,17 +323,18 @@ photon emission.
 %% ptlp
 Figure~\ref{fig:dyew:ptl} shows the corrections to the transverse momentum 
 distribution of the positively charged lepton, $p_\rT^\Plp$. Although 
-giving qualitatively a similar shape in the $\order(\alpha)$ corrections, 
+qualitatively displaying a similar shape in the $\order(\alpha)$ corrections, 
 we observe larger differences between the two computations around the 
 resonance and in the higher transverse momentum tails. This difference 
 can be understood from the fact that this observable is sensitive to 
 recoil effects from initial-state radiation which are not accounted for 
 in the YFS approach as used here.  Indeed, comparing the final-state 
 factorizable $\order(\alpha)$ corrections in PA to the full NLO EW 
-corrections shows a very similar picture as seen here (see Fig.~9 in 
-Ref.~\cite{Dittmaier:2014qza}). For the mixed-QCD--EW corrections, on 
+corrections, as it is done in Fig.~9 in Ref.~\cite{Dittmaier:2014qza},
+a very similar behaviour can be observed.
+For the mixed QCD--EW corrections, on 
 the other hand, the EW corrections contained in the 
-$\order(\alphas\alpha)$ PA prediction are also confined to the decay 
+$\order(\alphas\alpha)$ PA prediction are confined to the decay 
 sub-process similarly to the case of the YFS resummation. As a result, 
 we see a much better agreement between the two computations here.
 %% yll
@@ -347,13 +344,14 @@ $\order(\alpha)$, the resummed prediction is able to reproduce the
 exact fixed-order result to a large extent up to a small offset in 
 the normalisation. This shift can be attributed to the finite weak 
 corrections which are missing in the YFS resummed prediction here. 
-The purely weak corrections amount to a constant correction of 
-approximately $-0.5\%$ in this distribution which precisely matches 
+The purely weak corrections amount to a flat correction of 
+approximately $-0.5\%$ in this distribution as can be read off from
+Fig.~14 in Ref.~\cite{Dittmaier:2009cr} and matches well with 
 the observed offset. For the mixed QCD--EW corrections we obtain 
 corrections from the YFS resummation that are similar in shape to 
 those of the fixed-order prediction in the PA, however, with larger 
 negative corrections in the forward regime which possibly stem from 
-multi-photon effects on the event acception in this region
+multi-photon effects on the event acceptance in this region.
 
 
 
@@ -372,16 +370,16 @@ $\order(\alpha)$ and $\order(\alphas\alpha)$ corrections to various
 differential distributions given by the invariant mass of the leptons, 
 the lepton transverse momentum, and the rapidity of the lepton pair.
 We find that the QED resummation is able to capture the electroweak 
-corrections to these observables remarkably well and we were further 
-able to identify the sources for the small differences that was 
-observed between the two predictions.
+corrections to these observables remarkably well.
+Furthermore, we were able to identify various sources for the differences 
+that were observed between the two predictions.
 
 %%%%% outlook
 Building on the insights that were gained from this study, it will 
 be interesting to investigate further observables and also repeating 
-this comparison for the charged-current process. Furthermore, potential 
+this comparison for the charged-current process. Potential 
 improvements were identified in both computations which should be 
-explored in order to gain more insight into the numerical impact of 
+explored in order to gain further insights into the numerical impact of 
 the various ingredients that enter the two predictions. Such 
 improvements include the finite weak corrections that can be 
 incorporated to the YFS approach through the $\tilde{\beta}^1$ 
@@ -390,9 +388,11 @@ supplementing the fixed-order calculation with multi-photon emission
 effects. 
 
 
-\section*{ACKNOWLEDGEMENTS}
+\section*{Acknowledgements}
 
-We thank the organisers.
+We thank the Les Houches workshop for the hospitality 
+and the fruitful working environment. 
+A.H. acknowledges support from the ERC Advanced Grant MC@NNLO (340983).
 
 %=================================
 \bibliography{dyew_bib}
